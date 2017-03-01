@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Reflector
   - Shot
+  - Pitfall
+  - Goal
   layers:
   - Default
   - TransparentFX

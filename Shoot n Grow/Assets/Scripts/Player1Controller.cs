@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player1Controller : MonoBehaviour {
 	
@@ -35,11 +36,23 @@ public class Player1Controller : MonoBehaviour {
 	public float zRotation = 0.0f; //debug
 	//*/
 
+	private bool levelComplete = false;
+
+	public GameObject infoPanel;
+	public GameObject winText;
+	public GameObject deathText;
+
 	void Start(){
 		rb = GetComponent<Rigidbody> ();
 	}
 
 	void Update(){
+		if (levelComplete) {
+			if(Input.GetKey(KeyCode.Return))
+				SceneManager.LoadScene ((SceneManager.GetActiveScene ().buildIndex + 1) % SceneManager.sceneCountInBuildSettings);
+			return;
+		}
+
 		grounded = Physics.Linecast (transform.position, groundCheck1.position, 1 << LayerMask.NameToLayer ("Ground"))
 			|| Physics.Linecast (transform.position, groundCheck2.position, 1 << LayerMask.NameToLayer ("Ground"));
 
@@ -265,6 +278,20 @@ public class Player1Controller : MonoBehaviour {
 		//*/
 		//xVelocity = rb.velocity.x;
 		//yVelocity = rb.velocity.y;
+	}
+
+	void OnTriggerEnter(Collider other){
+		if (other.gameObject.CompareTag ("Pitfall")) {
+			gameObject.SetActive (false);
+			infoPanel.SetActive (true);
+			deathText.SetActive (true);
+		}
+
+		if (other.gameObject.CompareTag ("Goal")) {
+			levelComplete = true;
+			infoPanel.SetActive (true);
+			winText.SetActive (true);
+		}
 	}
 
 	void Flip(){
