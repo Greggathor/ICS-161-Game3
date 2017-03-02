@@ -288,6 +288,7 @@ public class Player1Controller : MonoBehaviour {
 		}
 
 		if (other.gameObject.CompareTag ("Goal")) {
+            moveHorizontal = 0.0f;
 			levelComplete = true;
 			infoPanel.SetActive (true);
 			winText.SetActive (true);
