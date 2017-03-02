@@ -27,6 +27,7 @@ public class Player1Controller : MonoBehaviour {
 	public float maxWidth;
 	private float width = 1.0f;
 	public float growthRate;
+	public bool revertToNormal;
 
 	/*
 	public float rotationSpeed;
@@ -103,10 +104,6 @@ public class Player1Controller : MonoBehaviour {
 			sc.enabled = false;
 		}
 
-		if (sc.enabled == false && grounded && !paperDash) {
-			sc.enabled = true;
-		}
-
 		if (invincible && Time.time > invincibilityEndTime) {
 			invincible = false;
 			power.material = powerList[powerNumber];
@@ -114,13 +111,23 @@ public class Player1Controller : MonoBehaviour {
 		//*/
 
 		if(Input.GetKeyDown(KeyCode.W)){
-			tallForm = true;
+			if(!wideForm)
+				tallForm = true;
 			//transform.localScale = new Vector3 (1.0f, 3.0f, 1.0f);
 		}
 
 		if(Input.GetKeyDown(KeyCode.S)){
-			wideForm = true;
+			if(!tallForm)
+				wideForm = true;
 			//transform.localScale = new Vector3 (3.0f, 1.0f, 1.0f);
+		}
+
+		if(tallForm && Input.GetKeyUp(KeyCode.W)){
+			revertToNormal = true;
+		}
+
+		if(wideForm && Input.GetKeyUp(KeyCode.S)){
+			revertToNormal = true;
 		}
 
 		/*
@@ -199,18 +206,22 @@ public class Player1Controller : MonoBehaviour {
 				height += growthRate;
 				transform.localScale = new Vector3(1.0f, height, 1.0f);
 			}
-			if (Input.GetKeyUp (KeyCode.W)) {
+			//if (Input.GetKeyUp (KeyCode.W)) {
+			if(revertToNormal){
+				revertToNormal = false;
 				tallForm = false;
 				height = 1.0f;
 				transform.localScale = new Vector3(1.0f, height, 1.0f);
 
-				//rotateRight = false;
-				//rotateLeft = false;
+				/*
+				rotateRight = false;
+				rotateLeft = false;
 
 				if(facingRight)
 					transform.rotation = new Quaternion (0.0f, 0.0f, 0.0f, 0.0f);
 				else
 					transform.rotation = new Quaternion (0.0f, 180.0f, 0.0f, 0.0f);
+				//*/	
 			}
 		}
 		if (wideForm) {
@@ -218,7 +229,9 @@ public class Player1Controller : MonoBehaviour {
 				width += growthRate;
 				transform.localScale = new Vector3(width, 1.0f, 1.0f);
 			}
-			if (Input.GetKeyUp (KeyCode.S)) {
+			//if (Input.GetKeyUp (KeyCode.S)) {
+			if(revertToNormal){
+				revertToNormal = false;
 				wideForm = false;
 				width = 1.0f;
 				transform.localScale = new Vector3(width, 1.0f, 1.0f);
