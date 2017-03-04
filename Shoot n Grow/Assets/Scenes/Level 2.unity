@@ -1869,10 +1869,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1811088539}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60ea9ea584e69454ea74d0b5408eed2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4698197ac55d0bf479efed76fba122bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1570963879}
+  player1: {fileID: 1570963879}
+  player2: {fileID: 2049269783}
+  minDistanceZoom: 2
+  maxDistanceZoom: 14
+  zoomRange: 10
+  moving: 0
 --- !u!1 &1930008914
 GameObject:
   m_ObjectHideFlags: 0

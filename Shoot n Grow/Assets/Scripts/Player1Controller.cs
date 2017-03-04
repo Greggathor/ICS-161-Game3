@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Player1Controller : MonoBehaviour {
 	
 	private Rigidbody rb;
+	private SphereCollider sc;
 
 	private bool jump = false;
 	public float jumpForce;
@@ -27,6 +28,7 @@ public class Player1Controller : MonoBehaviour {
 	public float maxWidth;
 	private float width = 1.0f;
 	public float growthRate;
+	public float shrinkSize;
 	public bool revertToNormal;
 
 	/*
@@ -45,6 +47,7 @@ public class Player1Controller : MonoBehaviour {
 
 	void Start(){
 		rb = GetComponent<Rigidbody> ();
+		sc = GetComponent<SphereCollider> ();
 	}
 
 	void Update(){
@@ -111,15 +114,19 @@ public class Player1Controller : MonoBehaviour {
 		//*/
 
 		if(Input.GetKeyDown(KeyCode.W)){
-			if(!wideForm)
+			if(!wideForm){
 				tallForm = true;
-			//transform.localScale = new Vector3 (1.0f, 3.0f, 1.0f);
+				sc.enabled = false;
+				//transform.localScale = new Vector3 (1.0f, 3.0f, 1.0f);
+			}
 		}
 
 		if(Input.GetKeyDown(KeyCode.S)){
-			if(!tallForm)
+			if(!tallForm){
 				wideForm = true;
-			//transform.localScale = new Vector3 (3.0f, 1.0f, 1.0f);
+				sc.enabled = false;
+				//transform.localScale = new Vector3 (3.0f, 1.0f, 1.0f);
+			}
 		}
 
 		if(tallForm && Input.GetKeyUp(KeyCode.W)){
@@ -204,7 +211,7 @@ public class Player1Controller : MonoBehaviour {
 		if (tallForm) {
 			if (height < maxHeight) {
 				height += growthRate;
-				transform.localScale = new Vector3(1.0f, height, 1.0f);
+				transform.localScale = new Vector3(shrinkSize, height, 1.0f);
 			}
 			//if (Input.GetKeyUp (KeyCode.W)) {
 			if(revertToNormal){
@@ -212,6 +219,7 @@ public class Player1Controller : MonoBehaviour {
 				tallForm = false;
 				height = 1.0f;
 				transform.localScale = new Vector3(1.0f, height, 1.0f);
+				sc.enabled = true;
 
 				/*
 				rotateRight = false;
@@ -227,7 +235,7 @@ public class Player1Controller : MonoBehaviour {
 		if (wideForm) {
 			if (width < maxWidth) {
 				width += growthRate;
-				transform.localScale = new Vector3(width, 1.0f, 1.0f);
+				transform.localScale = new Vector3(width, shrinkSize, 1.0f);
 			}
 			//if (Input.GetKeyUp (KeyCode.S)) {
 			if(revertToNormal){
@@ -235,6 +243,7 @@ public class Player1Controller : MonoBehaviour {
 				wideForm = false;
 				width = 1.0f;
 				transform.localScale = new Vector3(width, 1.0f, 1.0f);
+				sc.enabled = true;
 			}
 		}
 

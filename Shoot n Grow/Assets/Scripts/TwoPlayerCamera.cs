@@ -12,6 +12,8 @@ public class TwoPlayerCamera : MonoBehaviour {
 	private Vector3 midpoint;
 	public float zoomRange;
 
+	//public bool moving; // debug
+
 	private Vector3 offset;
 
 	void Start(){
@@ -21,11 +23,14 @@ public class TwoPlayerCamera : MonoBehaviour {
 	void LateUpdate(){
 		playerDistance = Vector3.Distance (player1.transform.position, player2.transform.position);
 		midpoint = Vector3.Lerp (player1.transform.position, player2.transform.position, 0.5f);
-		if (minDistanceZoom < playerDistance && playerDistance < maxDistanceZoom) {
-			transform.position = new Vector3 (midpoint.x, midpoint.y, zoomRange * playerDistance / (maxDistanceZoom - minDistanceZoom)) + offset;
+		if (playerDistance < minDistanceZoom) {
+			transform.position = new Vector3 (midpoint.x, midpoint.y, 0.0f) + offset;
+		}
+		else if (playerDistance > maxDistanceZoom) {
+			transform.position = new Vector3 (midpoint.x, midpoint.y, -zoomRange) + offset;
 		}
 		else {
-			transform.position = transform.position = new Vector3 (midpoint.x, midpoint.y, transform.position.z) + offset;
+			transform.position = new Vector3 (midpoint.x, midpoint.y, -zoomRange * (playerDistance - minDistanceZoom) / (maxDistanceZoom - minDistanceZoom)) + offset;
 		}
 	}
 }

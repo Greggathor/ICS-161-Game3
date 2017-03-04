@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 4515455441004598}
   - component: {fileID: 33408944878589858}
   - component: {fileID: 65274083644636090}
+  - component: {fileID: 135527490321511270}
   - component: {fileID: 23315803617645822}
   - component: {fileID: 54815986134699672}
   - component: {fileID: 114753183455530644}
@@ -304,8 +305,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.98, z: 1}
+  m_Center: {x: 0, y: 0.01, z: 0}
 --- !u!65 &65415495203704516
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -339,6 +340,20 @@ MonoBehaviour:
   maxHeight: 3
   maxWidth: 3
   growthRate: 0.5
+  shrinkSize: 0.5
+  revertToNormal: 0
   infoPanel: {fileID: 0}
   winText: {fileID: 0}
   deathText: {fileID: 0}
+--- !u!135 &135527490321511270
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1394573612614910}
+  m_Material: {fileID: 13400000, guid: 9ea31690e9faf42459edd9494de63606, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
