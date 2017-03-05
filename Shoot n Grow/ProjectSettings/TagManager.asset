@@ -8,6 +8,7 @@ TagManager:
   - Shot
   - Pitfall
   - Goal
+  - NarrowSpace
   layers:
   - Default
   - TransparentFX

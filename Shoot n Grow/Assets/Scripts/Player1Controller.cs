@@ -30,6 +30,7 @@ public class Player1Controller : MonoBehaviour {
 	public float growthRate;
 	public float shrinkSize;
 	public bool revertToNormal;
+	private bool narrowSpace = false;
 
 	/*
 	public float rotationSpeed;
@@ -214,7 +215,7 @@ public class Player1Controller : MonoBehaviour {
 				transform.localScale = new Vector3(shrinkSize, height, 1.0f);
 			}
 			//if (Input.GetKeyUp (KeyCode.W)) {
-			if(revertToNormal){
+			if(revertToNormal && !narrowSpace){
 				revertToNormal = false;
 				tallForm = false;
 				height = 1.0f;
@@ -238,7 +239,7 @@ public class Player1Controller : MonoBehaviour {
 				transform.localScale = new Vector3(width, shrinkSize, 1.0f);
 			}
 			//if (Input.GetKeyUp (KeyCode.S)) {
-			if(revertToNormal){
+			if(revertToNormal && !narrowSpace){
 				revertToNormal = false;
 				wideForm = false;
 				width = 1.0f;
@@ -314,6 +315,16 @@ public class Player1Controller : MonoBehaviour {
 			levelComplete = true;
 			infoPanel.SetActive (true);
 			winText.SetActive (true);
+		}
+
+		if (other.gameObject.CompareTag ("NarrowSpace")) {
+			narrowSpace = true;
+		}
+	}
+
+	void OnTriggerExit(Collider other){
+		if (other.gameObject.CompareTag ("NarrowSpace")) {
+			narrowSpace = false;
 		}
 	}
 

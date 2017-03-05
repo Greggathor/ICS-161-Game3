@@ -7,12 +7,13 @@ public class Switch : MonoBehaviour {
 	public GameObject affectedObject;
 
 	void OnTriggerEnter(Collider other){
-		if (affectedObject.activeSelf) {
-			affectedObject.SetActive (false);
+		if (other.gameObject.CompareTag ("Player") || other.CompareTag ("Shot")) {
+			if (affectedObject.activeSelf) {
+				affectedObject.SetActive (false);
+			} else {
+				affectedObject.SetActive (true);
+			}
+			gameObject.SetActive (false);
 		}
-		else {
-			affectedObject.SetActive (true);
-		}
-		gameObject.SetActive (false);	
 	}
 }
