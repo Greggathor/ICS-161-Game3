@@ -58,6 +58,9 @@ GameObject:
   - component: {fileID: 23315803617645822}
   - component: {fileID: 54815986134699672}
   - component: {fileID: 114753183455530644}
+  - component: {fileID: 114114043460936176}
+  - component: {fileID: 114236698537115512}
+  - component: {fileID: 114204081801449488}
   m_Layer: 8
   m_Name: Player1
   m_TagString: Player
@@ -319,6 +322,50 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114114043460936176
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1394573612614910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02349df52462d4a4abfe1abad360c560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: {fileID: 0}
+  initialtime: 500
+--- !u!114 &114204081801449488
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1394573612614910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ed680c9701a8a54497d380d65fbde8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeartSprites:
+  - {fileID: 21300010, guid: 9cfb6635182d6984e93c01246e263af0, type: 3}
+  - {fileID: 21300008, guid: 9cfb6635182d6984e93c01246e263af0, type: 3}
+  - {fileID: 21300006, guid: 9cfb6635182d6984e93c01246e263af0, type: 3}
+  - {fileID: 21300004, guid: 9cfb6635182d6984e93c01246e263af0, type: 3}
+  - {fileID: 21300002, guid: 9cfb6635182d6984e93c01246e263af0, type: 3}
+  - {fileID: 21300000, guid: 9cfb6635182d6984e93c01246e263af0, type: 3}
+  HeartUI: {fileID: 0}
+--- !u!114 &114236698537115512
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1394573612614910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 632e8152375ae1446a697037201e4d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
 --- !u!114 &114753183455530644
 MonoBehaviour:
   m_ObjectHideFlags: 1

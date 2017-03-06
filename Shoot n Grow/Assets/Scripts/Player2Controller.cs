@@ -175,9 +175,25 @@ public class Player2Controller : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 		if (other.gameObject.CompareTag ("Pitfall")) {
-			gameObject.SetActive (false);
-			infoPanel.SetActive (true);
-			deathText.SetActive (true);
+			//gameObject.SetActive (false);
+			//infoPanel.SetActive (true);
+			//deathText.SetActive (true);
+
+            Vector3 player1 = GameObject.Find("Player1").transform.position;
+            transform.position = new Vector3 (player1.x, player1.y + 1.5f, player1.z);
+
+            GameObject playerone = GameObject.Find("Player1");
+            Health healthaccess = playerone.GetComponent<Health>();
+
+            healthaccess.health--;
+
+            if(healthaccess.health <= 0)
+            {
+                playerone.SetActive(false);
+                gameObject.SetActive (false);
+                infoPanel.SetActive (true);
+                deathText.SetActive (true);
+            }
 		}
 
 		if (other.gameObject.CompareTag ("Goal")) {
