@@ -313,7 +313,7 @@ public class Player1Controller : MonoBehaviour {
             transform.position = new Vector3 (player2.x, player2.y + 1.5f, player2.z);
 
             GameObject playerone = GameObject.Find("Player1");
-            Health healthaccess = playerone.GetComponent<Health>();
+            HealthUI healthaccess = playerone.GetComponent<HealthUI>();
 
             healthaccess.health--;
 

@@ -7,20 +7,20 @@ public class HealthUI : MonoBehaviour {
 
     public Sprite[] HeartSprites;
     public Image HeartUI;
+    public int health = 5;
 
 
 	// Use this for initialization
 	void Start () {
-		
+
+    health = 5;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        GameObject healthobject = GameObject.Find("Player1");
-        Health healthaccess = healthobject.GetComponent<Health>();
-
-        HeartUI.sprite = HeartSprites[healthaccess.health];
+        HeartUI.sprite = HeartSprites[health];
 
 	}
 }

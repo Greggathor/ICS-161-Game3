@@ -183,7 +183,7 @@ public class Player2Controller : MonoBehaviour {
             transform.position = new Vector3 (player1.x, player1.y + 1.5f, player1.z);
 
             GameObject playerone = GameObject.Find("Player1");
-            Health healthaccess = playerone.GetComponent<Health>();
+            HealthUI healthaccess = playerone.GetComponent<HealthUI>();
 
             healthaccess.health--;
 

@@ -395,7 +395,8 @@ Prefab:
       propertyPath: HeartUI
       value: 
       objectReference: {fileID: 1015794185}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114236698537115512, guid: b26702140577bf94ba1c8a1aa062dbd9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b26702140577bf94ba1c8a1aa062dbd9, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &302638714 stripped
@@ -2380,7 +2381,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Sample Text
+  m_Text: 500
 --- !u!222 &2039683323
 CanvasRenderer:
   m_ObjectHideFlags: 0
