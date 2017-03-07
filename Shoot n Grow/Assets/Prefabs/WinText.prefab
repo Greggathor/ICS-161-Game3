@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224460431540358134}
   - component: {fileID: 222245386423104204}
   - component: {fileID: 114885564760735984}
+  - component: {fileID: 114492504672933338}
   m_Layer: 5
   m_Name: WinText
   m_TagString: Untagged
@@ -28,6 +29,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &114492504672933338
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1420603051399780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a60d00f8c4b33e147aeae5d439699798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherText: []
 --- !u!114 &114885564760735984
 MonoBehaviour:
   m_ObjectHideFlags: 1

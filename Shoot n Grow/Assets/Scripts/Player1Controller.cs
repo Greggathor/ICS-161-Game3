@@ -7,6 +7,8 @@ public class Player1Controller : MonoBehaviour {
 	
 	private Rigidbody rb;
 	private SphereCollider sc;
+	private Vector3 spawnpoint;
+	public bool checkpoint = false;
 
 	private bool jump = false;
 	public float jumpForce;
@@ -29,7 +31,7 @@ public class Player1Controller : MonoBehaviour {
 	private float width = 1.0f;
 	public float growthRate;
 	public float shrinkSize;
-	public bool revertToNormal;
+	private bool revertToNormal;
 	private bool narrowSpace = false;
 
 	/*
@@ -46,9 +48,12 @@ public class Player1Controller : MonoBehaviour {
 	public GameObject winText;
 	public GameObject deathText;
 
+	//public int decrement = 0; //dubug
+
 	void Start(){
 		rb = GetComponent<Rigidbody> ();
 		sc = GetComponent<SphereCollider> ();
+		spawnpoint = transform.position;
 	}
 
 	void Update(){
@@ -158,6 +163,14 @@ public class Player1Controller : MonoBehaviour {
 				transform.localScale = new Vector3 (1.0f, 1.0f, 1.0f);
 			}
 		//*/
+
+		if (!grounded && sc.enabled == true) {
+			sc.enabled = false;
+		}
+
+		if (sc.enabled == false && grounded && !(tallForm || wideForm)) {
+			sc.enabled = true;
+		}
 	}
 
 	void FixedUpdate () {
@@ -309,15 +322,18 @@ public class Player1Controller : MonoBehaviour {
 			//infoPanel.SetActive (true);
 			//deathText.SetActive (true);
 
-            Vector3 player2 = GameObject.Find("Player2").transform.position;
-            transform.position = new Vector3 (player2.x, player2.y + 1.5f, player2.z);
+            //Vector3 player2 = GameObject.Find("Player2").transform.position;
+            //transform.position = new Vector3 (player2.x, player2.y + 1.5f, player2.z);
+			transform.position = new Vector3 (spawnpoint.x, spawnpoint.y, spawnpoint.z);
 
-            GameObject playerone = GameObject.Find("Player1");
-            HealthUI healthaccess = playerone.GetComponent<HealthUI>();
+            //GameObject playerone = GameObject.Find("Player1");
+            //HealthUI healthaccess = playerone.GetComponent<HealthUI>();
+			HealthUI healthaccess = gameObject.GetComponent<HealthUI>();
 
+			//decrement--;
             healthaccess.health--;
 
-            if(healthaccess.health <= 0)
+            if(healthaccess.health < 0)
             {
                 GameObject playertwo = GameObject.Find("Player2");
                 playertwo.SetActive(false);
@@ -336,6 +352,11 @@ public class Player1Controller : MonoBehaviour {
 
 		if (other.gameObject.CompareTag ("NarrowSpace")) {
 			narrowSpace = true;
+		}
+
+		if (other.gameObject.CompareTag ("Checkpoint")) {
+			checkpoint = true;
+			spawnpoint = other.transform.position;
 		}
 	}
 

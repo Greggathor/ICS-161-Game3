@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Player2Controller : MonoBehaviour {
 
 	private Rigidbody rb;
+	private SphereCollider sc;
+	private Vector3 spawnpoint;
 
 	private bool jump = false;
 	public float jumpForce;
@@ -31,8 +33,12 @@ public class Player2Controller : MonoBehaviour {
 	public GameObject winText;
 	public GameObject deathText;
 
+	//public int decrement = 0; //debug
+
 	void Start(){
 		rb = GetComponent<Rigidbody> ();
+		sc = GetComponent<SphereCollider> ();
+		spawnpoint = transform.position;
 	}
 
 	void Update(){
@@ -95,6 +101,14 @@ public class Player2Controller : MonoBehaviour {
 				transform.localScale = new Vector3 (1.0f, 1.0f, 1.0f);
 			}
 		//*/
+
+		if (!grounded && sc.enabled == true) {
+			sc.enabled = false;
+		}
+
+		if (sc.enabled == false && grounded) {
+			sc.enabled = true;
+		}
 
 		if (Input.GetButton ("Fire1") && Time.time > nextFire) {
 			nextFire = Time.time + fireRate;
@@ -179,15 +193,17 @@ public class Player2Controller : MonoBehaviour {
 			//infoPanel.SetActive (true);
 			//deathText.SetActive (true);
 
-            Vector3 player1 = GameObject.Find("Player1").transform.position;
-            transform.position = new Vector3 (player1.x, player1.y + 1.5f, player1.z);
+            //Vector3 player1 = GameObject.Find("Player1").transform.position;
+            //transform.position = new Vector3 (player1.x, player1.y + 1.5f, player1.z);
+			transform.position = new Vector3 (spawnpoint.x, spawnpoint.y, spawnpoint.z);
 
             GameObject playerone = GameObject.Find("Player1");
             HealthUI healthaccess = playerone.GetComponent<HealthUI>();
 
+			//decrement -=1;
             healthaccess.health--;
 
-            if(healthaccess.health <= 0)
+            if(healthaccess.health < 0)
             {
                 playerone.SetActive(false);
                 gameObject.SetActive (false);
@@ -201,6 +217,10 @@ public class Player2Controller : MonoBehaviour {
 			levelComplete = true;
 			infoPanel.SetActive (true);
 			winText.SetActive (true);
+		}
+
+		if (other.gameObject.CompareTag ("Checkpoint")) {
+			spawnpoint = other.transform.position;
 		}
 	}
 

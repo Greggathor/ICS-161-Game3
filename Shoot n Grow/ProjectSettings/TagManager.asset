@@ -9,6 +9,7 @@ TagManager:
   - Pitfall
   - Goal
   - NarrowSpace
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

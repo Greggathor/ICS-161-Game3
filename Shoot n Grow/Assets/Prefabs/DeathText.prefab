@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224913447011254464}
   - component: {fileID: 222491364674030396}
   - component: {fileID: 114572536999025778}
+  - component: {fileID: 114909046599071836}
   m_Layer: 5
   m_Name: DeathText
   m_TagString: Untagged
@@ -64,6 +65,18 @@ MonoBehaviour:
 
 
     Press R to restart.'
+--- !u!114 &114909046599071836
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1714280479955456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a60d00f8c4b33e147aeae5d439699798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherText: []
 --- !u!222 &222491364674030396
 CanvasRenderer:
   m_ObjectHideFlags: 1
