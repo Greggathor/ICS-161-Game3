@@ -362,7 +362,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 0}
-  initialtime: 500
 --- !u!114 &114204081801449488
 MonoBehaviour:
   m_ObjectHideFlags: 1

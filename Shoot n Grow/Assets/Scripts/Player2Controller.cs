@@ -203,9 +203,10 @@ public class Player2Controller : MonoBehaviour {
             HealthUI healthaccess = playerone.GetComponent<HealthUI>();
 
 			//decrement -=1;
-            healthaccess.health--;
+            //healthaccess.health--;
+            healthaccess.LoseHealth();
 
-            if(healthaccess.health < 0)
+            if(healthaccess.health == 0)
             {
                 playerone.SetActive(false);
                 gameObject.SetActive (false);
