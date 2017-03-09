@@ -7,30 +7,32 @@ using UnityEngine.SceneManagement;
 public class Timer : MonoBehaviour {
 
     public Text timer;
-    public float initialtime = 500.0f;
+    //public float initialtime = 500.0f;
 
-    private float start;
-    private float remaining;
+    private float currenttime;
+    //private float remaining;
 
     // Use this for initialization
     void Start ()
     {
-        start = Time.time;
+ 
     }
     
     // Update is called once per frame
     void Update ()
     {
-        float temp = Time.time - start;
 
-        remaining = initialtime - temp;
+        currenttime = Time.time;
+        //float temp = Time.time - start;
 
-        if(remaining < 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+        //remaining = initialtime - temp;
 
-        timer.text = "Time Remaining: " + remaining.ToString("f0");
+        //if(remaining < 0)
+        //{
+        //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //}
+
+        timer.text = "Time Elapsed: " + currenttime.ToString("f0");
 
     }
 }
