@@ -16,6 +16,7 @@ public class Player1Controller : MonoBehaviour {
 	private bool grounded;
 	public Transform groundCheck1;
 	public Transform groundCheck2;
+    public Transform groundCheck3;
 
 	private float moveHorizontal = 0.0f;
 	private bool facingRight = true;
@@ -64,9 +65,13 @@ public class Player1Controller : MonoBehaviour {
 		}
 
 		grounded = Physics.Linecast (transform.position, groundCheck1.position, 1 << LayerMask.NameToLayer ("Ground"))
-			|| Physics.Linecast (transform.position, groundCheck2.position, 1 << LayerMask.NameToLayer ("Ground"));
+			|| Physics.Linecast (transform.position, groundCheck2.position, 1 << LayerMask.NameToLayer ("Ground"))
+            || Physics.Linecast (transform.position, groundCheck3.position, 1 << LayerMask.NameToLayer ("Ground"));
 
-		if (Input.GetButtonDown ("Jump") && grounded) {
+        //grounded = Physics.Linecast(groundCheck1.position, groundCheck2.position, 1 << LayerMask.NameToLayer ("Ground"));
+        //Debug.DrawLine(groundCheck1.position,groundCheck2.position,Color.red);
+
+		if (Input.GetKeyDown(KeyCode.Space) && grounded) {
 		//if (Input.GetKeyDown(KeyCode.RightControl) && grounded) {
 			jump = true;
 		}

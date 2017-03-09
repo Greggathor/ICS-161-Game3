@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33146905205426482}
   - component: {fileID: 65165229294963752}
   - component: {fileID: 23914556199280022}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Reflector
   m_TagString: Reflector
   m_Icon: {fileID: 0}

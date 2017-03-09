@@ -10,6 +10,7 @@ public class Switch : MonoBehaviour {
 		if (other.gameObject.CompareTag ("Player") || other.CompareTag ("Shot")) {
 			if (affectedObject.activeSelf) {
 				affectedObject.SetActive (false);
+                //Destroy(affectedObject);
 			} else {
 				affectedObject.SetActive (true);
 			}
