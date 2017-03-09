@@ -31,7 +31,8 @@ public class Player1Controller : MonoBehaviour {
 	public float maxWidth;
 	private float width = 1.0f;
 	public float growthRate;
-	public float shrinkSize;
+	//public float shrinkSize;
+	public float shrinkRate;
 	private bool revertToNormal;
 	private bool narrowSpace = false;
 
@@ -230,14 +231,16 @@ public class Player1Controller : MonoBehaviour {
 		if (tallForm) {
 			if (height < maxHeight) {
 				height += growthRate;
-				transform.localScale = new Vector3(shrinkSize, height, 1.0f);
+				width -= shrinkRate;
+				transform.localScale = new Vector3(width, height, 1.0f);
 			}
 			//if (Input.GetKeyUp (KeyCode.W)) {
 			if(revertToNormal && !narrowSpace){
 				revertToNormal = false;
 				tallForm = false;
 				height = 1.0f;
-				transform.localScale = new Vector3(1.0f, height, 1.0f);
+				width = 1.0f;
+				transform.localScale = new Vector3(width, height, 1.0f);
 				sc.enabled = true;
 
 				/*
@@ -254,14 +257,16 @@ public class Player1Controller : MonoBehaviour {
 		if (wideForm) {
 			if (width < maxWidth) {
 				width += growthRate;
-				transform.localScale = new Vector3(width, shrinkSize, 1.0f);
+				height -= shrinkRate;
+				transform.localScale = new Vector3(width, height, 1.0f);
 			}
 			//if (Input.GetKeyUp (KeyCode.S)) {
 			if(revertToNormal && !narrowSpace){
 				revertToNormal = false;
 				wideForm = false;
 				width = 1.0f;
-				transform.localScale = new Vector3(width, 1.0f, 1.0f);
+				height = 1.0f;
+				transform.localScale = new Vector3(width, height, 1.0f);
 				sc.enabled = true;
 			}
 		}

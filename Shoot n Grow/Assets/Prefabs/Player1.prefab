@@ -405,7 +405,7 @@ MonoBehaviour:
   maxHeight: 3
   maxWidth: 3
   growthRate: 0.5
-  shrinkSize: 0.5
+  shrinkRate: 0.125
   infoPanel: {fileID: 0}
   winText: {fileID: 0}
   deathText: {fileID: 0}
