@@ -342,7 +342,7 @@ public class Player1Controller : MonoBehaviour {
 
 			//decrement--;
             //healthaccess.health--;
-            healthaccess.LoseHealth();
+            healthaccess.LoseHealth(1);
 
             if(healthaccess.health == 0)
             {
@@ -352,6 +352,17 @@ public class Player1Controller : MonoBehaviour {
                 infoPanel.SetActive (true);
                 deathText.SetActive (true);
             }
+		}
+
+		if(other.gameObject.CompareTag("Dangerous")){
+			HealthUI healthaccess = gameObject.GetComponent<HealthUI>();
+			healthaccess.LoseHealth(healthaccess.health);
+
+			GameObject playertwo = GameObject.Find("Player2");
+			playertwo.SetActive(false);
+			gameObject.SetActive (false);
+			infoPanel.SetActive (true);
+			deathText.SetActive (true);
 		}
 
 		if (other.gameObject.CompareTag ("Goal")) {

@@ -9,14 +9,11 @@ public class HealthUI : MonoBehaviour {
     public Image HeartUI;
     public int health;
 
-
-	// Use this for initialization
-	void Start () {
-    health = 5;
-	}
-
-    public void LoseHealth(){
-        health--;
+	public void LoseHealth(int damage){
+        health -= damage;
+		if (health < 0) {
+			health = 0;
+		}
         HeartUI.sprite = HeartSprites[health];
     }
 }
