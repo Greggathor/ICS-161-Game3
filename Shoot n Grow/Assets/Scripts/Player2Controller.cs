@@ -17,7 +17,7 @@ public class Player2Controller : MonoBehaviour {
 	public Transform groundCheck2;
     public Transform groundCheck3;
 
-	private float moveHorizontal = 0.0f;
+	public float moveHorizontal = 0.0f;
 	private bool facingRight = true;
 	public float speed;
 	public float maxSpeed;
@@ -28,7 +28,7 @@ public class Player2Controller : MonoBehaviour {
 	public float fireRate;
 	private float nextFire;
 
-	private bool levelComplete = false;
+	public bool levelComplete = false;
 
 	public GameObject infoPanel;
 	public GameObject winText;
@@ -227,6 +227,9 @@ public class Player2Controller : MonoBehaviour {
 		}
 
 		if (other.gameObject.CompareTag ("Goal")) {
+            //GameObject playerone = GameObject.Find("Player1");
+            //Player1Controller oneaccess = playerone.GetComponent<Player1Controller>();
+            //oneaccess.moveHorizontal = 0.0f;
             moveHorizontal = 0.0f;
 			levelComplete = true;
 			infoPanel.SetActive (true);

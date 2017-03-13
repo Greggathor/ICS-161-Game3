@@ -18,7 +18,7 @@ public class Player1Controller : MonoBehaviour {
 	public Transform groundCheck2;
     public Transform groundCheck3;
 
-	private float moveHorizontal = 0.0f;
+	public float moveHorizontal = 0.0f;
 	private bool facingRight = true;
 	public float speed;
 	public float maxSpeed;
@@ -44,7 +44,7 @@ public class Player1Controller : MonoBehaviour {
 	public float zRotation = 0.0f; //debug
 	//*/
 
-	private bool levelComplete = false;
+	public bool levelComplete = false;
 
 	public GameObject infoPanel;
 	public GameObject winText;
@@ -177,6 +177,15 @@ public class Player1Controller : MonoBehaviour {
 		if (sc.enabled == false && grounded && !(tallForm || wideForm)) {
 			sc.enabled = true;
 		}
+
+        Scene currentScene = SceneManager.GetActiveScene ();
+        string sceneName = currentScene.name;
+
+        //Only shows cursors in main menu
+        if(sceneName != "MainMenu")
+            Cursor.visible = false;
+        else
+            Cursor.visible = true;
 	}
 
 	void FixedUpdate () {
@@ -366,6 +375,9 @@ public class Player1Controller : MonoBehaviour {
 		}
 
 		if (other.gameObject.CompareTag ("Goal")) {
+            //GameObject playertwo = GameObject.Find("Player2");
+            //Player2Controller twoaccess = playertwo.GetComponent<Player2Controller>();
+            //twoaccess.moveHorizontal = 0.0f;
             moveHorizontal = 0.0f;
 			levelComplete = true;
 			infoPanel.SetActive (true);

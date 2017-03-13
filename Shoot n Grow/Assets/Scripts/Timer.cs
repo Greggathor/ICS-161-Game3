@@ -10,19 +10,24 @@ public class Timer : MonoBehaviour {
     //public float initialtime = 500.0f;
 
     private float currenttime;
+    private float displaytime;
     //private float remaining;
-
-    // Use this for initialization
-    void Start ()
-    {
- 
-    }
     
     // Update is called once per frame
     void Update ()
     {
+        GameObject playerone = GameObject.Find("Player1");
+        Player1Controller oneaccess = playerone.GetComponent<Player1Controller>();
 
-        currenttime = Time.time;
+        GameObject playertwo = GameObject.Find("Player2");
+        Player2Controller twoaccess = playertwo.GetComponent<Player2Controller>();
+
+        currenttime = Time.timeSinceLevelLoad;
+
+        if(!oneaccess.levelComplete && !twoaccess.levelComplete)
+            displaytime = currenttime;
+
+        //Original script for timer.
         //float temp = Time.time - start;
 
         //remaining = initialtime - temp;
@@ -32,7 +37,8 @@ public class Timer : MonoBehaviour {
         //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         //}
 
-        timer.text = "Time Elapsed: " + currenttime.ToString("f0");
+        timer.text = "Time Elapsed: " + displaytime.ToString("f0");
+
 
     }
 }
