@@ -68,42 +68,6 @@ public class Player2Controller : MonoBehaviour {
 			moveHorizontal = 0.0f;
 		}
 
-		/*
-		if (!grounded && sc.enabled == true) {
-			sc.enabled = false;
-		}
-
-		if (sc.enabled == false && grounded && !paperDash) {
-			sc.enabled = true;
-		}
-
-		if (invincible && Time.time > invincibilityEndTime) {
-			invincible = false;
-			power.material = powerList[powerNumber];
-		}
-		//*/
-
-		/*
-		else if (powerNumber == 1) {
-				if (grounded) {
-					//transform.position = new Vector3 (transform.position.x, transform.position.y + translateUp);
-					rb.AddForce (new Vector3 (0.0f, scissorHop, 0.0f), ForceMode.Impulse);
-					ignoreGrounded = true;
-				}
-
-				if (Mathf.Sign (transform.right.x) > 0)
-					rotationDirection = 0.0f;
-				else
-					rotationDirection = 180f;
-				scissorSpin = true;
-
-			}
-			else if (powerNumber == 2) {
-				rockForm = true;
-				transform.localScale = new Vector3 (1.0f, 1.0f, 1.0f);
-			}
-		//*/
-
 		if (!grounded && sc.enabled == true) {
 			sc.enabled = false;
 		}
@@ -123,34 +87,15 @@ public class Player2Controller : MonoBehaviour {
 		if (levelComplete) {
 			return;
 		}
-
-		if (paperDash) {
-			if (Input.GetKeyUp (KeyCode.F) && lowCeiling == false) {
-				paperDash = false;
-				transform.localScale = new Vector3 (1.0f, 1.5f, 1.0f);
-				sc.enabled = true;
-			}
-			//if(!grounded)
-			rb.velocity = new Vector3 (dashSpeed * Mathf.Sign (transform.right.x), -paperDropSpeed);
-		}
 		//*/
-
 
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, 0.0f);
 		rb.AddForce (movement, ForceMode.VelocityChange);
 
-		/*
-		float moveHorizontal = Input.GetAxis ("Horizontal");
-		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, 0.0f);
-		rb.AddForce (movement * speed, ForceMode.VelocityChange);
-		//*/
-
-		//*
 		if (moveHorizontal > 0 && !facingRight)
 			Flip ();
 		else if (moveHorizontal < 0 && facingRight)
 			Flip ();
-		//*/
 
 		if (moveHorizontal == 0 && rb.velocity.x != 0.0f && Mathf.Abs (rb.velocity.x) < stopSpeed) {
 			rb.velocity = new Vector3 (0.0f, rb.velocity.y, 0.0f);
@@ -166,27 +111,6 @@ public class Player2Controller : MonoBehaviour {
 		else {
 			rb.AddForce(new Vector3(0.0f, -gravity, 0.0f), ForceMode.Acceleration);
 		}
-
-		/*
-		if (scissorSpin) {
-			Quaternion deltaRotation = Quaternion.Euler((new Vector3(0.0f, 0.0f, 1.0f)) * Time.deltaTime * -rotationSpeed);
-			rb.MoveRotation(rb.rotation * deltaRotation);
-			if (ignoreGrounded) {
-				if (!grounded)
-					ignoreGrounded = false;
-			}
-			else if (grounded || Input.GetKeyUp (KeyCode.F)) {
-				scissorSpin = false;
-				transform.rotation = new Quaternion (0.0f, rotationDirection, 0.0f, 0.0f);
-
-				//scissorSpin flip bug
-				if((facingRight && transform.rotation.y != 0f) || (!facingRight && transform.rotation.y == 0f))
-					transform.RotateAround(transform.position, transform.up, 180f);
-			}
-		}
-		//*/
-		//xVelocity = rb.velocity.x;
-		//yVelocity = rb.velocity.y;
 	}
 
 	void OnTriggerEnter(Collider other){

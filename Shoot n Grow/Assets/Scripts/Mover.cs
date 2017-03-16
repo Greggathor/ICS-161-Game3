@@ -6,8 +6,8 @@ public class Mover : MonoBehaviour {
 
 	public float speed;
 	//public float angle; //debug
-	public float rAngleX; //debug
-	public float rAngleY; //debug
+	public float rAngleX;
+	public float rAngleY;
 	public Vector3 reflectedAngle;
 	public float offsetAngle;
 	public char shotDirection;
